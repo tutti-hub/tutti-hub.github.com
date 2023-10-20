@@ -22,3 +22,50 @@ body {
 .d-grid {
     display: grid;
 }
+figure {
+    line-height: 0;
+    margin: 0;
+}
+section {
+    line-height: 1;
+}
+.grid-container {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "header"
+        "info-block"
+        "about-block"
+        "category-block"
+        "nutrition-type-block"
+        "information-text-block"
+        "contact-us"
+        "footer-info"
+        "footer"
+}
+header {
+    grid-area: header;
+}
+.info-block {
+    grid-area: info-block;
+}
+.about-block {
+    grid-area: about-block;
+}
+.category-block {
+    grid-area: category-block;
+}
+.nutrition-type-block {
+    grid-area: nutrition-type-block;
+}
+.information-text-block {
+    grid-area: information-text-block;
+}
+.contact-us {
+    grid-area: contact-us;
+}
+.footer-info {
+    grid-area: footer-info;
+}
+.footer {
+    grid-area: footer;
+}
