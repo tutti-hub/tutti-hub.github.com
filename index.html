@@ -3,68 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Математика</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <header>
-        <nav class="container menu">
-            <a href="#">Меню</a>
-            <a href="#">Технологии</a>
-            <a href="#">Контакты</a>
-        </nav>
-    </header>
     
+    
+    <nav>
+        <button id="add-btn">+</button>
+        <button id="sub-btn">-</button>
+        <button id="mul-btn">*</button>
+        <button id="div-btn">:</button>
+    </nav>
+
     <main>
-        <div class="container technology">
-            <img src="imgs/html.png" alt="html">
-            <img src="imgs/arrow.png" alt="arrow">
-            <img src="imgs/css.png" alt="css">
-            <img src="imgs/arrow.png" alt="arrow">
-            <img src="imgs/js.png" alt="js">
-        </div>
-        
-        <div class="container gallery">
-            <img src="imgs/1.png" alt="images">
-            <img src="imgs/2.png" alt="images">
-            <img src="imgs/3.png" alt="images">
-            <img src="imgs/4.png" alt="images">
-            <img src="imgs/5.png" alt="images">
-            <img src="imgs/6.png" alt="images">
-        </div>
+        <ul id="list-output">
 
-        <div class="container news">
-            <article>
-                <img src="imgs/7.png" alt="image">
-                <div class="description">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis tempora id quod nulla tenetur ipsum ab similique nisi? Voluptas ducimus similique, fugit consequatur quos delectus aliquam amet saepe sed eos. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat itaque, ratione quae repellat exercitationem quia totam. Nemo perferendis, eligendi aliquid nihil odio provident recusandae accusamus sint, illum soluta officia dolore? Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus illum, deserunt architecto optio eligendi harum, aspernatur unde molestias eum a aliquid veniam maxime nesciunt incidunt reprehenderit ut itaque minima ea? 
-                    </p>
-                </div>
-            </article>
-            <article>
-                <img src="imgs/8.png" alt="image">
-                <div class="description">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis tempora id quod nulla tenetur ipsum ab similique nisi? Voluptas ducimus similique, fugit consequatur quos delectus aliquam amet saepe sed eos. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat itaque, ratione quae repellat exercitationem quia totam. Nemo perferendis, eligendi aliquid nihil odio provident recusandae accusamus sint, illum soluta officia dolore? Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus illum, deserunt architecto optio eligendi harum, aspernatur unde molestias eum a aliquid veniam maxime nesciunt incidunt reprehenderit ut itaque minima ea? 
-                    </p>
-                </div>
-            </article>
-            <article>
-                <img src="imgs/9.png" alt="image">
-                <div class="description">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis tempora id quod nulla tenetur ipsum ab similique nisi? Voluptas ducimus similique, fugit consequatur quos delectus aliquam amet saepe sed eos. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat itaque, ratione quae repellat exercitationem quia totam. Nemo perferendis, eligendi aliquid nihil odio provident recusandae accusamus sint, illum soluta officia dolore? Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus illum, deserunt architecto optio eligendi harum, aspernatur unde molestias eum a aliquid veniam maxime nesciunt incidunt reprehenderit ut itaque minima ea? 
-                    </p>
-                </div>
-            </article>
-
-        </div>
-
+        </ul>
     </main>
-    
-    <footer>
 
-    </footer>
+    <script src="js/operations.js"></script>
+    <script src="js/randomizer.js"></script>
+    <script src="js/equation.js"></script>
+    <script>
+        
+        let rand = new Randomizer();
+        let max = 20;
+        let gen = new EquationsGenerator(rand, max);
+        let amount = 10;
+
+        let listOutput = document.querySelector("#list-output");                
+        let addBtn = document.querySelector("#add-btn");
+        let subBtn = document.querySelector("#sub-btn");
+        let mulBtn = document.querySelector("#mul-btn");
+        let divBtn = document.querySelector("#div-btn");
+
+        addBtn.addEventListener("click", (e) => {
+            listOutput.innerHTML = "";
+            for (let i = 0; i < amount; i++) {
+                listOutput.insertAdjacentHTML("beforeend", `<li>${gen.generate(Operations.ADD)}</li>`);                
+            }
+        });
+
+        subBtn.addEventListener("click", (e) => {
+            listOutput.innerHTML = "";
+            for (let i = 0; i < amount; i++){
+                listOutput.insertAdjacentHTML("beforeend", `<li>${gen.generate(Operations.SUB)}</li>`);                   
+            }
+        });
+        mulBtn.addEventListener("click", (e) => {
+            listOutput.innerHTML = "";
+            for (let i = 0; i < amount; i++){
+                listOutput.insertAdjacentHTML("beforeend", `<li>${gen.generate(Operations.MUL)}</li>`);                   
+            }
+        });
+        divBtn.addEventListener("click", (e) => {
+            listOutput.innerHTML = "";
+            for (let i = 0; i < amount; i++){
+                listOutput.insertAdjacentHTML("beforeend", `<li>${gen.generate(Operations.DIV)}</li>`);                   
+            }
+        });
+
+    </script>
 </body>
 </html>
