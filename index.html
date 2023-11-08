@@ -8,18 +8,20 @@
 </head>
 <body>
     
+    <header>
+        <nav>
+            <button id="add-btn"> + </button>
+            <button id="sub-btn"> - </button>
+            <button id="mul-btn"> * </button>
+            <button id="div-btn"> : </button>
+            <button id="help-btn"> ? </button>
+        </nav>
+    </header>
     
-    <nav>
-        <button id="add-btn">+</button>
-        <button id="sub-btn">-</button>
-        <button id="mul-btn">*</button>
-        <button id="div-btn">:</button>
-    </nav>
-
     <main>
-        <ul id="list-output">
+        <div id="output" class="container">
 
-        </ul>
+        </div>
     </main>
 
     <script src="js/operations.js"></script>
@@ -32,36 +34,40 @@
         let gen = new EquationsGenerator(rand, max);
         let amount = 10;
 
-        let listOutput = document.querySelector("#list-output");                
+        let output = document.querySelector("#output");                
         let addBtn = document.querySelector("#add-btn");
         let subBtn = document.querySelector("#sub-btn");
         let mulBtn = document.querySelector("#mul-btn");
         let divBtn = document.querySelector("#div-btn");
+        let helpBtn = document.querySelector("#help-btn");
 
         addBtn.addEventListener("click", (e) => {
-            listOutput.innerHTML = "";
+            output.innerHTML = "";
             for (let i = 0; i < amount; i++) {
-                listOutput.insertAdjacentHTML("beforeend", `<li>${gen.generate(Operations.ADD)}</li>`);                
+                output.insertAdjacentHTML("beforeend", `<div>${gen.generate(Operations.ADD)}</div>`);                
             }
         });
 
         subBtn.addEventListener("click", (e) => {
-            listOutput.innerHTML = "";
+            output.innerHTML = "";
             for (let i = 0; i < amount; i++){
-                listOutput.insertAdjacentHTML("beforeend", `<li>${gen.generate(Operations.SUB)}</li>`);                   
+                output.insertAdjacentHTML("beforeend", `<div>${gen.generate(Operations.SUB)}</div>`);                   
             }
         });
         mulBtn.addEventListener("click", (e) => {
-            listOutput.innerHTML = "";
+            output.innerHTML = "";
             for (let i = 0; i < amount; i++){
-                listOutput.insertAdjacentHTML("beforeend", `<li>${gen.generate(Operations.MUL)}</li>`);                   
+                output.insertAdjacentHTML("beforeend", `<div>${gen.generate(Operations.MUL)}</div>`);                   
             }
         });
         divBtn.addEventListener("click", (e) => {
-            listOutput.innerHTML = "";
+            output.innerHTML = "";
             for (let i = 0; i < amount; i++){
-                listOutput.insertAdjacentHTML("beforeend", `<li>${gen.generate(Operations.DIV)}</li>`);                   
+                output.insertAdjacentHTML("beforeend", `<div>${gen.generate(Operations.DIV)}</div>`);                   
             }
+        });
+        helpBtn.addEventListener("click", (e) => {
+           output.innerHTML = "<img src='img/help.png' alt='help'>"; 
         });
 
     </script>
